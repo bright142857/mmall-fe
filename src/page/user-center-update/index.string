@@ -1,0 +1,25 @@
+ <div class="user-info">
+          <div class="form-line">
+            <span class="label">用户名:</span>
+            <span class="text">{{username}}</span>
+          </div>
+          
+          <div class="form-line">
+            <span class="label">邮 箱:</span>
+            <input class="input" id="email" value="{{email}}" audocomplete="off">
+          </div>
+          <div class="form-line">
+            <span class="label">电 话:</span>
+            <input class="input" id="phone" value="{{phone}}" audocomplete="off">
+          </div>
+          <div class="form-line">
+            <span class="label">问 题:</span>
+            <input class="input" id="question" value="{{question}}" audocomplete="off">
+          </div>
+          <div class="form-line">
+            <span class="label">答 案:</span>
+            <input class="input" id="answer" value="{{answer}}" audocomplete="off">
+          </div>
+          <span class="btn btn-submit" id="btn-submit">提交</span>
+        </div>
+

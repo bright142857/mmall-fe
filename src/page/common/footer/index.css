@@ -1,0 +1,28 @@
+/**
+ * @author wangmingliangwx
+ * @Email  bright142857@foxmail.com
+ * @version : index, v 0.1 2018/9/2 12:38 wangmingliangwx Exp$
+ */
+/*
+* @Author: Rosen
+* @Date:   2017-05-17 21:20:02
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-05-28 15:03:24
+*/
+.footer{
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.footer .links{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}
+.footer .links .link{
+    padding: 0 10px;
+}
+.footer .copyright{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}
