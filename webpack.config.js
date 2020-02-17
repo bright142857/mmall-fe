@@ -8,7 +8,7 @@ var HtmlWebpackPlugin   =  require('html-webpack-plugin'); // html的loader
 var WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev_win';
 
 
-// 获取html-webpack-plugin参数的方法 
+// 获取html-webpack-plugin参数的方法
 var getHtmlConfig = function(name, title){
     return {
         template    : './src/view/' + name + '.html',  // 源文件
@@ -23,7 +23,7 @@ var getHtmlConfig = function(name, title){
            false 不插入生成的js文件，这个几乎不会用到的
 
         */
-        inject      : true,  
+        inject      : true,
         hash        : true,  // 版本号
         /**
              chunks主要用于多入口文件，当你有多个入口文件，
@@ -40,23 +40,23 @@ var config = {
      告诉webpack从哪里开始打包
   */
 	entry : {
-		'common'            : ['./src/page/common/index.js'],
-		'index'             : ['./src/page/index/index.js'],
-	  'user-login'        : ['./src/page/user-login/index.js'],
-	  'list'              : ['./src/page/list/index.js'],
-		'detail'            : ['./src/page/detail/index.js'],
-		'cart'            	: ['./src/page/cart/index.js'],
-    'order-confirm'     : ['./src/page/order-confirm/index.js'],
-    'order-list'        : ['./src/page/order-list/index.js'],
-    'order-detail'      : ['./src/page/order-detail/index.js'],
-    'payment'           : ['./src/page/payment/index.js'],
-    'user-register'     : ['./src/page/user-register/index.js'],
-    'user-pass-reset'   : ['./src/page/user-pass-reset/index.js'],
-    'user-pass-update'  : ['./src/page/user-pass-update/index.js'],
-    'user-center'       : ['./src/page/user-center/index.js'],
-    'user-center-update': ['./src/page/user-center-update/index.js'],
-		'result'            : ['./src/page/result/index.js'],
-    'about'             : ['./src/page/about/index.js']
+      'common': ['./src/page/common/index.js'],
+      'index': ['./src/page/index/index.js'],
+      'user-login': ['./src/page/user-login/index.js'],
+      'list': ['./src/page/list/index.js'],
+      'detail': ['./src/page/detail/index.js'],
+      'cart': ['./src/page/cart/index.js'],
+      'order-confirm': ['./src/page/order-confirm/index.js'],
+      'order-list': ['./src/page/order-list/index.js'],
+      'order-detail': ['./src/page/order-detail/index.js'],
+      'payment': ['./src/page/payment/index.js'],
+      'user-register': ['./src/page/user-register/index.js'],
+      'user-pass-reset': ['./src/page/user-pass-reset/index.js'],
+      'user-pass-update': ['./src/page/user-pass-update/index.js'],
+      'user-center': ['./src/page/user-center/index.js'],
+      'user-center-update': ['./src/page/user-center-update/index.js'],
+      'result': ['./src/page/result/index.js'],
+      'about': ['./src/page/about/index.js']
 	},
   /**
     输出 告诉webpack怎么对待这些打包的代码
@@ -78,7 +78,7 @@ var config = {
           //url loader
           { test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
 		     {
-                test: /\.string$/, 
+                test: /\.string$/,
                 loader: 'html-loader',
                 query : {
                     minimize : true,
@@ -88,7 +88,7 @@ var config = {
         ]
 	},
 	resolve : {
-    // 
+    //
 		alias : {
             // __dirname : 表示当前根目录
             node_modules    : __dirname + '/node_modules',
@@ -98,6 +98,19 @@ var config = {
             image           : __dirname + '/src/image'
 		}
 	},
+    devServer: {
+        port: 8088,
+        inline: true,
+        proxy : {
+            '**/*.do' : {
+                target: 'http://localhost:8080/',
+                // target: 'http://test.happymmall.com',
+                changeOrigin : true
+            }
+        }
+    },
+
+
   // 插件
 	plugins : [
 		     // 独立通用模块到js/base.js
@@ -108,11 +121,11 @@ var config = {
 	     	// 把css单独打包到文件里
         new ExtractTextPlugin("css/[name].css"),
         //html模板的处理
-     	  new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
+        new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
         new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPlugin(getHtmlConfig('list', '商品列表')),
-     	  new HtmlWebpackPlugin(getHtmlConfig('detail', '商品详情')),
-     	  new HtmlWebpackPlugin(getHtmlConfig('cart', '购物车')),
+        new HtmlWebpackPlugin(getHtmlConfig('detail', '商品详情')),
+        new HtmlWebpackPlugin(getHtmlConfig('cart', '购物车')),
         new HtmlWebpackPlugin(getHtmlConfig('order-confirm', '订单确认')),
         new HtmlWebpackPlugin(getHtmlConfig('order-list', '我的订单')),
         new HtmlWebpackPlugin(getHtmlConfig('order-detail', '订单详情')),
@@ -122,7 +135,7 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('user-pass-update', '修改密码')),
         new HtmlWebpackPlugin(getHtmlConfig('user-center', '个人中心')),
         new HtmlWebpackPlugin(getHtmlConfig('user-center-update', '个人信息修改')),
-      	new HtmlWebpackPlugin(getHtmlConfig('result', '结果提示')),
+        new HtmlWebpackPlugin(getHtmlConfig('result', '结果提示')),
         new HtmlWebpackPlugin(getHtmlConfig('about', '关于MMall'))
 		]
 
