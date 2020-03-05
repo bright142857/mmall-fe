@@ -98,17 +98,18 @@ var config = {
             image           : __dirname + '/src/image'
 		}
 	},
-    devServer: {
+    // 本地开发代理到8080端口
+    /*devServer: {
         port: 8088,
         inline: true,
         proxy : {
-            '**/*.do' : {
+            '**!/!*.do' : {
                 target: 'http://localhost:8080/',
                 // target: 'http://test.happymmall.com',
                 changeOrigin : true
             }
         }
-    },
+    },*/
 
 
   // 插件
